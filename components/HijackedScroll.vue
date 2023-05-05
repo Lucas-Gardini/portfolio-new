@@ -27,6 +27,8 @@ function scrollToPosition(position: number, duration: number) {
 }
 
 onMounted(() => {
+	if (window.innerWidth < 800) return;
+
 	const sections = document.querySelectorAll(".section") as unknown as HTMLElement[];
 
 	const scroll = reactive({
@@ -104,35 +106,33 @@ onMounted(() => {
 
 	let isThrottled = false;
 
-	if (window.innerWidth > 768) {
-		window.addEventListener(
-			"wheel",
-			(event) => {
-				event.preventDefault();
+	window.addEventListener(
+		"wheel",
+		(event) => {
+			event.preventDefault();
 
-				if (isThrottled) {
-					return;
-				}
+			if (isThrottled) {
+				return;
+			}
 
-				isThrottled = true;
+			isThrottled = true;
 
-				setTimeout(function () {
-					isThrottled = false;
-				}, scroll.throttleDuration);
+			setTimeout(function () {
+				isThrottled = false;
+			}, scroll.throttleDuration);
 
-				if (event.deltaY < 0) {
-					if (scroll.activeSection === 0) return false;
-					upSection();
-					console.log("WHEELED UP");
-				} else {
-					if (scroll.activeSection >= scroll.sectionCount) return false;
-					downSection();
-					console.log("WHEELED DOWN");
-				}
-			},
-			{ passive: false }
-		);
-	}
+			if (event.deltaY < 0) {
+				if (scroll.activeSection === 0) return false;
+				upSection();
+				console.log("WHEELED UP");
+			} else {
+				if (scroll.activeSection >= scroll.sectionCount) return false;
+				downSection();
+				console.log("WHEELED DOWN");
+			}
+		},
+		{ passive: false }
+	);
 
 	window.addEventListener("keydown", (event) => {
 		if (event.keyCode == 40 && scroll.activeSection != sections.length - 1) {
