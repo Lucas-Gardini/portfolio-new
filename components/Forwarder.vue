@@ -28,7 +28,7 @@ watch(redirectingTo, () => {
 <template>
 	<div v-if="redirectingTo.text !== '' && canShow" class="animate__animated animate__fadeIn forwarder">
 		<LottieView animation-link="/paperplane.json" :height="200" :width="200" />
-		<ClientOnly> {{ $t("travelingTo") }}: &nbsp;&nbsp;{{ redirectingTo.text }} </ClientOnly>
+		<ClientOnly> Traveling to: &nbsp;&nbsp;{{ redirectingTo.text }} </ClientOnly>
 	</div>
 </template>
 

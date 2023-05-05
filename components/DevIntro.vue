@@ -18,7 +18,7 @@
 				<div class="role">
 					<div class="block"></div>
 					<ClientOnly>
-						<p>{{ $t("devRole") }}</p>
+						<p>Fullstack Developer</p>
 					</ClientOnly>
 				</div>
 			</div>

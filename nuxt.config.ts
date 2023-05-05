@@ -2,5 +2,4 @@
 export default defineNuxtConfig({
 	ssr: true,
 	css: ["animate.css", "vue3-lottie/dist/style.css", "@/assets/css/main.scss"],
-	modules: ["@nuxtjs/i18n"],
 });
