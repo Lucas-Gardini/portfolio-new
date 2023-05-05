@@ -9,14 +9,16 @@ const redirectingTo = reactive({ text: "", link: "" });
 
 const canShow = ref(false);
 onMounted(() => {
-	if (!url.value.includes("lucas.gardini.dev") || !url.value.includes("localhost")) return (canShow.value = true);
+	if (!url.value.includes("lucas.gardini.dev") && !url.value.includes("localhost")) {
+		if (url.value.includes("github")) {
+			redirectingTo.text = "Github";
+			redirectingTo.link = REDIRECTS.github;
+		} else {
+			redirectingTo.text = "Página não encontrada";
+			redirectingTo.link = REDIRECTS.notFound;
+		}
 
-	if (url.value.includes("github")) {
-		redirectingTo.text = "Github";
-		redirectingTo.link = REDIRECTS.github;
-	} else {
-		redirectingTo.text = "Página não encontrada";
-		redirectingTo.link = REDIRECTS.notFound;
+		canShow.value = true;
 	}
 });
 
