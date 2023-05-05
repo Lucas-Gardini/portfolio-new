@@ -17,9 +17,7 @@
 
 				<div class="role">
 					<div class="block"></div>
-					<ClientOnly>
-						<p>Fullstack Developer</p>
-					</ClientOnly>
+					<p>Fullstack Developer</p>
 				</div>
 			</div>
 		</div>
