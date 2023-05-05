@@ -51,8 +51,6 @@ onMounted(() => {
 		const positionFromTop = sections[scroll.activeSection + 1].offsetTop;
 		// $("body, html").animate({ scrollTop: positionFromTop }, 300);
 
-		console.log(positionFromTop);
-
 		scrollToPosition(positionFromTop, 300);
 
 		scroll.activeSection = scroll.activeSection + 1;
@@ -124,11 +122,9 @@ onMounted(() => {
 			if (event.deltaY < 0) {
 				if (scroll.activeSection === 0) return false;
 				upSection();
-				console.log("WHEELED UP");
 			} else {
 				if (scroll.activeSection >= scroll.sectionCount) return false;
 				downSection();
-				console.log("WHEELED DOWN");
 			}
 		},
 		{ passive: false }
