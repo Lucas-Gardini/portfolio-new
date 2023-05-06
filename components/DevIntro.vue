@@ -1,13 +1,24 @@
+<script setup lang="ts">
+const section = ref<HTMLElement>();
+
+function scrollDown() {
+	if (section.value) {
+		scrollToPosition(section.value.offsetTop, 300);
+		currentSection.value = 1;
+	}
+}
+
+const currentSection = useCurrentSection();
+
+onMounted(() => {
+	section.value = document.querySelectorAll(".section")[1] as unknown as HTMLElement;
+	// currentSection.value = 1;
+});
+</script>
+
 <template>
 	<div>
-		<LottieView
-			class="animate__animated animate__fadeIn"
-			style="position: absolute; left: 50%; transform: translateX(-50%)"
-			:style="`top: -24px;`"
-			animationLink="/party-penguin.json"
-			:height="200"
-			:width="200"
-		/>
+		<LottieView class="animate__animated animate__fadeIn" style="position: absolute; left: 50%; transform: translateX(-50%)" :style="`top: -24px;`" animationLink="/party-penguin.json" :height="200" :width="200" />
 		<div class="container">
 			<div class="box">
 				<div class="title">
@@ -21,106 +32,142 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="scroll-down-indicator" @click="scrollDown">
+			<LottieView animation-link="/scroll-down.json" :height="50" :width="50" />
+		</div>
 	</div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+.scroll-down-indicator {
+	position: fixed;
+	bottom: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 999;
+	height: 100px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	color: white;
+	font-weight: bold;
+
+	cursor: pointer;
+}
+
 .container {
 	width: 100%;
 	height: 100vh;
-	background: #232323;
+	background: transparent;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
 
-	.box {
-		width: 250px;
-		height: 250px;
-		position: relative;
+.box {
+	width: 250px;
+	height: 250px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.title {
+	width: 100%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 50px;
+
+	.block {
+		width: 0%;
+		height: inherit;
+		background: #14a44d;
+		position: absolute;
+
 		display: flex;
-		justify-content: center;
-		flex-direction: column;
 
-		.title {
-			width: 100%;
-			position: relative;
-			display: flex;
-			align-items: center;
-			height: 50px;
+		&:not(.no-animation) {
+			animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+		}
+	}
 
-			.block {
-				width: 0%;
-				height: inherit;
-				background: #14a44d;
-				position: absolute;
-				animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
-				display: flex;
-			}
+	h1 {
+		font-family: "Poppins";
+		color: #fff;
+		font-size: 32px;
+		opacity: 1;
+		display: flex;
+		align-items: baseline;
+		position: relative;
 
-			h1 {
-				font-family: "Poppins";
-				color: #fff;
-				font-size: 32px;
-				-webkit-animation: mainFadeIn 2s forwards;
-				-o-animation: mainFadeIn 2s forwards;
-				animation: mainFadeIn 2s forwards;
-				animation-delay: 1.6s;
-				opacity: 0;
-				display: flex;
-				align-items: baseline;
-				position: relative;
-
-				span {
-					width: 0px;
-					height: 0px;
-					-webkit-border-radius: 50%;
-					-moz-border-radius: 50%;
-					border-radius: 50%;
-
-					background: #14a44d;
-					-webkit-animation: load 0.6s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
-					animation: popIn 0.8s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
-					animation-delay: 2s;
-					margin-left: 5px;
-					margin-top: -10px;
-					position: absolute;
-					bottom: 13px;
-					right: -12px;
-				}
-			}
+		&:not(.no-animation) {
+			-webkit-animation: mainFadeIn 2s forwards;
+			-o-animation: mainFadeIn 2s forwards;
+			animation: mainFadeIn 2s forwards;
+			animation-delay: 1.6s;
+			opacity: 0;
 		}
 
-		.role {
-			width: 100%;
-			position: relative;
-			display: flex;
-			align-items: center;
-			height: 30px;
+		span {
+			width: 7px;
+			height: 7px;
+
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+
+			background: #14a44d;
+
+			margin-left: 5px;
 			margin-top: -10px;
+			position: absolute;
+			bottom: 13px;
+			right: -12px;
 
-			.block {
-				width: 0%;
-				height: inherit;
-				background: #0f783c;
-				position: absolute;
-				animation: secBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+			&:not(.no-animation) {
+				width: 0px;
+				height: 0px;
+				-webkit-animation: load 0.6s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+				animation: popIn 0.8s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
 				animation-delay: 2s;
-				display: flex;
-			}
-
-			p {
-				animation: secFadeIn 2s forwards;
-				animation-delay: 3.2s;
-				opacity: 0;
-				font-weight: 400;
-				font-family: "Lato";
-				color: #ffffff;
-				font-size: 12px;
-				text-transform: uppercase;
-				letter-spacing: 5px;
 			}
 		}
+	}
+}
+
+.role {
+	width: 100%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 30px;
+	margin-top: -10px;
+
+	.block {
+		width: 0%;
+		height: inherit;
+		background: #0f783c;
+		position: absolute;
+		animation: secBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+		animation-delay: 2s;
+		display: flex;
+	}
+
+	p {
+		animation: secFadeIn 2s forwards;
+		animation-delay: 3.2s;
+		opacity: 0;
+		font-weight: 400;
+		font-family: "Lato";
+		color: #ffffff;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 5px;
 	}
 }
 
