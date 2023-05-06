@@ -1,4 +1,6 @@
 <script setup lang="ts">
+defineProps<{ isWallpaper?: boolean }>();
+
 const section = ref<HTMLElement>();
 
 function scrollDown() {
@@ -33,7 +35,7 @@ onMounted(() => {
 			</div>
 		</div>
 
-		<div class="scroll-down-indicator" @click="scrollDown">
+		<div class="scroll-down-indicator" @click="scrollDown" v-if="!isWallpaper">
 			<LottieView animation-link="/scroll-down.json" :height="50" :width="50" />
 		</div>
 	</div>

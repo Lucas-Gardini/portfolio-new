@@ -1,9 +1,21 @@
 <script setup lang="ts">
+const route = useRoute();
+
+const isWallpaper = computed(() => route.query.wallpaper === "1");
+
 const currentSection = useCurrentSection();
 </script>
 
 <template>
-	<div>
+	<div v-if="isWallpaper">
+		<div class="section one">
+			<Backdrop />
+			<div style="position: relative; z-index: 2">
+				<DevIntro :is-wallpaper="true" />
+			</div>
+		</div>
+	</div>
+	<div v-else>
 		<TopDevName v-if="currentSection !== 0" />
 
 		<ClientOnly>
