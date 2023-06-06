@@ -7,7 +7,7 @@ const showMouse = ref(false);
 
 function scrollDown() {
 	if (section.value) {
-		scrollToPosition(section.value.offsetTop + 50, 300);
+		scrollToPosition(section.value.offsetTop - 120, 300);
 
 		emit("scrolledDown");
 	}
