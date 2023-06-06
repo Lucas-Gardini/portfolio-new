@@ -7,16 +7,16 @@ const state = reactive({
 	scrollPosition: 0,
 	viewportHeight: 0,
 	threshold: 0,
-	showDevName: false
+	showTop: false
 });
 
 const handleScroll = () => {
 	state.scrollPosition = window.scrollY;
 
 	if (state.scrollPosition > state.threshold) {
-		state.showDevName = true;
+		state.showTop = true;
 	} else {
-		state.showDevName = false;
+		state.showTop = false;
 	}
 };
 
@@ -41,7 +41,8 @@ onUnmounted(() => {
 		</div>
 	</div>
 	<div v-else>
-		<TopDevName :show="state.showDevName" />
+		<TopDevName :show="state.showTop" />
+		<TopSocial :show="state.showTop" />
 
 		<ClientOnly>
 			<div>

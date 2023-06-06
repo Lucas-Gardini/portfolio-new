@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const REDIRECTS = {
 	github: "https://github.com/Lucas-Gardini",
-	notFound: "https:lucas.gardini.dev",
+	youtube: "https://www.youtube.com/@kowalskijr.",
+	notFound: "https://lucas.gardini.dev"
 };
 
 const url = ref(window.location.href);

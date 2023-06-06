@@ -747,6 +747,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify/types@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@iconify/types@npm:2.0.0"
+  checksum: 029f58542c160e9d4a746869cf2e475b603424d3adf3994c5cc8d0406c47e6e04a3b898b2707840c1c5b9bd5563a1660a34b110d89fce43923baca5222f4e597
+  languageName: node
+  linkType: hard
+
+"@iconify/vue@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "@iconify/vue@npm:4.1.1"
+  dependencies:
+    "@iconify/types": ^2.0.0
+  peerDependencies:
+    vue: ">=3"
+  checksum: 505fd96e69d6b805a4d3a5ee6f1a51e0cedb9ce9eb67be85be7118dafbb6bfcaf8c6ea6b261cdbf4efefb65687fd7572a82bd5ddab16383c5ecf13998dff9ca3
+  languageName: node
+  linkType: hard
+
 "@ioredis/commands@npm:^1.1.1":
   version: 1.2.0
   resolution: "@ioredis/commands@npm:1.2.0"
@@ -908,7 +926,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.5.3, @nuxt/kit@npm:^3.4.3":
+"@nuxt/kit@npm:3.5.3, @nuxt/kit@npm:^3.4.3, @nuxt/kit@npm:^3.5.0":
   version: 3.5.3
   resolution: "@nuxt/kit@npm:3.5.3"
   dependencies:
@@ -5373,12 +5391,23 @@ __metadata:
     "@types/node": ^20
     animate.css: ^4.1.1
     nuxt: ^3.5.3
+    nuxt-icon: ^0.4.1
     postcss-custom-properties: ^13.2.0
     sass: ^1.62.1
     scss: ^0.2.4
     vue3-lottie: ^2.7.0
   languageName: unknown
   linkType: soft
+
+"nuxt-icon@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "nuxt-icon@npm:0.4.1"
+  dependencies:
+    "@iconify/vue": ^4.1.1
+    "@nuxt/kit": ^3.5.0
+  checksum: c9cd19750174df890ebec696e22d69dc570ab18afce0e08191ebae5b6d8bfc3a61d1b21e87dcf3b9eaf33d149d61286446d09ce9a28e56d8990e355309633c15
+  languageName: node
+  linkType: hard
 
 "nuxt@npm:^3.5.3":
   version: 3.5.3

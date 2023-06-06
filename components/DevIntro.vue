@@ -3,6 +3,7 @@ defineProps<{ isWallpaper?: boolean }>();
 const emit = defineEmits(["scrolledDown"]);
 
 const section = ref<HTMLElement>();
+const showMouse = ref(false);
 
 function scrollDown() {
 	if (section.value) {
@@ -13,6 +14,13 @@ function scrollDown() {
 }
 
 onMounted(() => {
+	const url = new URL(window.location.href);
+	const subdomain = url.hostname.split(".")[0];
+
+	if (subdomain && (subdomain === "lucas" || subdomain === "gardini" || subdomain === "localhost")) {
+		showMouse.value = true;
+	}
+
 	section.value = document.querySelectorAll(".section")[1] as unknown as HTMLElement;
 });
 </script>
@@ -24,7 +32,7 @@ onMounted(() => {
 			<div class="box">
 				<div class="title">
 					<span class="block"></span>
-					<h1>Lucas Gardini<span></span></h1>
+					<h1 class="bold">Lucas Gardini<span class="no-animation"></span></h1>
 				</div>
 
 				<div class="role">
@@ -34,7 +42,7 @@ onMounted(() => {
 			</div>
 		</div>
 
-		<div class="scroll-down-indicator" @click="scrollDown" v-if="!isWallpaper">
+		<div class="scroll-down-indicator" @click="scrollDown" v-if="!isWallpaper && showMouse">
 			<LottieView animation-link="/scroll-down.json" :height="50" :width="50" />
 		</div>
 	</div>
@@ -98,13 +106,18 @@ onMounted(() => {
 	}
 
 	h1 {
-		font-family: "Poppins";
+		/* font-family: "Poppins"; */
+		font-weight: bold;
 		color: #fff;
 		font-size: 32px;
 		opacity: 1;
 		display: flex;
 		align-items: baseline;
 		position: relative;
+
+		@media (max-width: 768px) {
+			font-size: 24px;
+		}
 
 		&:not(.no-animation) {
 			-webkit-animation: mainFadeIn 2s forwards;
@@ -129,6 +142,10 @@ onMounted(() => {
 			position: absolute;
 			bottom: 13px;
 			right: -12px;
+
+			@media (max-width: 768px) {
+				position: static;
+			}
 
 			&:not(.no-animation) {
 				width: 0px;

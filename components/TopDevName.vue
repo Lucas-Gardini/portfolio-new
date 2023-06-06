@@ -4,7 +4,7 @@ const props = defineProps<{ show: boolean }>();
 const firstLoad = ref(true);
 const currentClass = computed(() => {
 	if (firstLoad.value) return "hidden animate__fadeOutUp";
-	return "top-right animate__animated " + (props.show ? "animate__fadeInDown" : "animate__fadeOutUp");
+	return "top-left animate__animated " + (props.show ? "animate__fadeInDown" : "animate__fadeOutUp");
 });
 
 watch(
@@ -28,9 +28,9 @@ watch(
 	display: none !important;
 }
 
-.top-right {
+.top-left {
 	position: fixed;
 	top: 30px;
-	right: 40px;
+	left: 40px;
 }
 </style>
