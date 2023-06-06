@@ -3,7 +3,32 @@ const route = useRoute();
 
 const isWallpaper = computed(() => route.query.wallpaper === "1");
 
-const currentSection = useCurrentSection();
+const state = reactive({
+	scrollPosition: 0,
+	viewportHeight: 0,
+	threshold: 0,
+	showDevName: false
+});
+
+const handleScroll = () => {
+	state.scrollPosition = window.scrollY;
+
+	if (state.scrollPosition > state.threshold) {
+		state.showDevName = true;
+	} else {
+		state.showDevName = false;
+	}
+};
+
+onMounted(() => {
+	state.viewportHeight = window.innerHeight;
+	state.threshold = state.viewportHeight;
+	window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+	window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
@@ -16,44 +41,32 @@ const currentSection = useCurrentSection();
 		</div>
 	</div>
 	<div v-else>
-		<TopDevName v-if="currentSection !== 0" />
+		<TopDevName :show="state.showDevName" />
 
 		<ClientOnly>
-			<HijackedScroll>
-				<div>
-					<div class="section one">
-						<Backdrop />
-						<div style="position: relative; z-index: 2">
-							<DevIntro />
-						</div>
-					</div>
-					<div class="section two">
-						<div style="position: relative; z-index: 2">
-							<DevIntro />
-						</div>
-					</div>
-					<div class="section three">
-						<div style="position: relative; z-index: 2">
-							<DevIntro />
-						</div>
-					</div>
-					<div class="section four">
-						<div style="position: relative; z-index: 2">
-							<DevIntro />
-						</div>
-					</div>
-					<div class="section five">
-						<div style="position: relative; z-index: 2">
-							<DevIntro />
-						</div>
-					</div>
-					<div class="section six">
-						<div style="position: relative; z-index: 2">
-							<DevIntro />
-						</div>
+			<div>
+				<div class="section one">
+					<Backdrop />
+					<div style="position: relative; z-index: 2">
+						<DevIntro @scrolled-down="handleScroll" />
 					</div>
 				</div>
-			</HijackedScroll>
+				<div class="section two">
+					<div style="position: relative; z-index: 2"></div>
+				</div>
+				<div class="section three">
+					<div style="position: relative; z-index: 2"></div>
+				</div>
+				<div class="section four">
+					<div style="position: relative; z-index: 2"></div>
+				</div>
+				<div class="section five">
+					<div style="position: relative; z-index: 2"></div>
+				</div>
+				<div class="section six">
+					<div style="position: relative; z-index: 2"></div>
+				</div>
+			</div>
 		</ClientOnly>
 
 		<ClientOnly>
@@ -71,7 +84,7 @@ const currentSection = useCurrentSection();
 	height: 100vh;
 	width: 100vw;
 
-	&.one {
+	/* &.one {
 		background-image: url("/images/background-visiwig-one.svg");
 	}
 
@@ -93,6 +106,6 @@ const currentSection = useCurrentSection();
 
 	&.six {
 		background-image: url("/images/background-visiwig-six.svg");
-	}
+	} */
 }
 </style>

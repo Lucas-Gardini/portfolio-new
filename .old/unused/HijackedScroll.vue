@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 const currentSection = useCurrentSection();
 
 onMounted(() => {
@@ -124,4 +124,4 @@ onMounted(() => {
 
 <template>
 	<slot />
-</template>
+</template> -->

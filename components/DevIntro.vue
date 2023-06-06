@@ -1,20 +1,19 @@
 <script setup lang="ts">
 defineProps<{ isWallpaper?: boolean }>();
+const emit = defineEmits(["scrolledDown"]);
 
 const section = ref<HTMLElement>();
 
 function scrollDown() {
 	if (section.value) {
-		scrollToPosition(section.value.offsetTop, 300);
-		currentSection.value = 1;
+		scrollToPosition(section.value.offsetTop + 50, 300);
+
+		emit("scrolledDown");
 	}
 }
 
-const currentSection = useCurrentSection();
-
 onMounted(() => {
 	section.value = document.querySelectorAll(".section")[1] as unknown as HTMLElement;
-	// currentSection.value = 1;
 });
 </script>
 
@@ -43,7 +42,7 @@ onMounted(() => {
 
 <style lang="scss">
 .scroll-down-indicator {
-	position: fixed;
+	position: absolute;
 	bottom: 50px;
 	left: 50%;
 	transform: translateX(-50%);
