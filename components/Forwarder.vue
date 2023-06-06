@@ -14,7 +14,7 @@ onMounted(() => {
 		if (url.value.includes("github")) {
 			redirectingTo.text = "Github";
 			redirectingTo.link = REDIRECTS.github;
-		} else if (url.value.includes("youtube") {
+		} else if (url.value.includes("youtube")) {
 			redirectingTo.text = "Youtube";
 			redirectingTo.link = REDIRECTS.youtube;
 		} else {
