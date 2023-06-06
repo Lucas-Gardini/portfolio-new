@@ -14,8 +14,11 @@ onMounted(() => {
 		if (url.value.includes("github")) {
 			redirectingTo.text = "Github";
 			redirectingTo.link = REDIRECTS.github;
+		} else if (url.value.includes("youtube") {
+			redirectingTo.text = "Youtube";
+			redirectingTo.link = REDIRECTS.youtube;
 		} else {
-			redirectingTo.text = "Página não encontrada";
+			redirectingTo.text = "Redirect not found...";
 			redirectingTo.link = REDIRECTS.notFound;
 		}
 
