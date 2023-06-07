@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Card from "./components/SailboatUI/Card.vue";
+
 const route = useRoute();
 
 const isWallpaper = computed(() => route.query.wallpaper === "1");
@@ -46,15 +48,18 @@ onUnmounted(() => {
 
 		<div>
 			<!-- <Backdrop /> -->
-			<div class="section one" style="padding: 0">
+			<div class="section one" style="padding: 0; height: 110vh">
 				<div class="background-first">
 					<DevIntro @scrolled-down="handleScroll" />
 				</div>
 			</div>
 			<div class="section two">
 				<div class="grid grid-flow-row-dense">
-					<div class="flex flex-col gap-5 p-5">
-						<h1 class="text-white text-4xl">Hello! I'm <span class="text-primary">Lucas Gardini</span>, a <span>Fullstack</span> developer from Brazil!</h1>
+					<div class="flex flex-col gap-5 p-5 text-center">
+						<h1 class="text-white text-4xl font-bold">Hello! I'm <span class="text-primary">Lucas Gardini</span>, a <span>Fullstack</span> developer from Brazil!</h1>
+
+						<hr class="w-[25px] ml-auto mr-auto" />
+
 						<h2 class="text-white text-3xl">
 							Currently working at <a href="https://integrativa.com.br/" target="_blank" class="text-blue-500">Integrativa</a>, developing solutions with <span class="text-blue-400">Typescript</span> and
 							<span class="text-purple-500">C#</span>
@@ -64,9 +69,9 @@ onUnmounted(() => {
 
 						<h1 class="text-white text-4xl font-bold">About me</h1>
 						<p class="text-white">
-							Graduated in Computer Networks from the Federal Institute of São Paulo, Catanduva Campus, I started programming in 2019 at the beginning of the course and have been learning more every day since then. I
-							started with Python and then PHP, but I ended up finding my passion in Javascript. Since then, my focus has been on enhancing my skills both in front-end development using VueJs with NuxtJs and
-							Electron, and in back-end development using NodeJs and Express, along with MongoDB and MySql.
+							Graduated in Computer Networks from the <a href="https://ctd.ifsp.edu.br/" target="_blank" class="text-blue-500 underline">Federal Institute of São Paulo, Catanduva Campus</a>, I started programming in
+							2019 at the beginning of the course and have been learning more every day since then. I started with Python and then PHP, but I ended up finding my passion in Javascript. Since then, my focus has been
+							on enhancing my skills both in front-end development using VueJs with NuxtJs and Electron, and in back-end development using NodeJs and Express, along with MongoDB and PostgreSQL.
 						</p>
 
 						<p class="text-white">
@@ -96,67 +101,102 @@ onUnmounted(() => {
 					<Divider />
 					<h1 class="text-white text-4xl mb-10 font-bold">Tecnologies</h1>
 
-					<div class="flex flex-wrap justify-center gap-10 flex-row card mt-20">
-						<div class="relative w-3/12 text-center">
-							<h2 class="absolute top-[-50px] left-[50%] translate-x-[-50%] p-5 rounded bg-primary text-lg font-bold align-middle items-center justify-center flex">
-								<Icon name="ph:code-bold" size="24" />&nbsp;Languages
-							</h2>
+					<div class="flex flex-wrap justify-center gap-10 flex-row mt-10">
+						<Card
+							image="/images/section-francisco-arnela.jpg"
+							image-title="Languages"
+							title="Languages"
+							icon="ph:code-bold"
+							content="I have experience with markup languages HTML, CSS, and XML, as well as programming languages Typescript, C#, and Python."
+							:badges="[
+								{
+									text: 'Typescript',
+									color: 'bg-blue-100 text-blue-500'
+								},
+								{
+									text: 'C#',
+									color: 'bg-purple-100 text-purple-500'
+								},
+								{
+									text: 'Python',
+									color: 'bg-yellow-100 text-yellow-500'
+								}
+							]"
+						/>
 
-							<div class="flex flex-row justify-evenly w-full mb-5 mt-16">
-								<Icon name="devicon:html5" size="32" />
-								<Icon name="devicon:css3" size="32" />
-							</div>
+						<Card
+							image="/images/section-francisco-arnela.jpg"
+							image-title="Languages"
+							title="Frameworks"
+							icon="material-symbols:deployed-code"
+							content="I have knowledge of front-end frameworks such as Vue and Nuxt, React, React-Native, and Next, and back-end frameworks like NestJS and Express."
+							:badges="[
+								{
+									text: 'Vue & Nuxt',
+									color: 'bg-green-100 text-green-500'
+								},
+								{
+									text: 'React, React-Native & Next',
+									color: 'bg-blue-100 text-blue-600'
+								},
+								{
+									text: 'NestJS & Express',
+									color: 'bg-red-100 text-red-500'
+								}
+							]"
+						/>
 
-							<div class="flex flex-row justify-evenly w-full mb-5">
-								<Icon name="devicon:typescript" size="32" />
-								<Icon name="devicon:csharp" size="32" />
-							</div>
+						<Card
+							image="/images/section-francisco-arnela.jpg"
+							image-title="Languages"
+							title="Databases"
+							icon="material-symbols:database"
+							content="I have experience working with databases such as PostgreSQL, MongoDB, and MySQL.<br/> Note: MongoDB holds a special place in my heart ❤️."
+							:badges="[
+								{
+									text: 'PostgreSQL',
+									color: 'bg-blue-100 text-blue-400'
+								},
+								{
+									text: 'MongoDB',
+									color: 'bg-green-100 text-green-600'
+								},
+								{
+									text: 'MySQL',
+									color: 'bg-yellow-100 text-yellow-600'
+								}
+							]"
+						/>
 
-							<div class="flex flex-row justify-evenly w-full mb-5">
-								<Icon name="devicon:python" size="32" />
-								<Icon name="devicon:php" size="32" />
-							</div>
-						</div>
-						<div class="relative w-3/12 text-center">
-							<h2 class="absolute top-[-50px] left-[50%] translate-x-[-50%] p-5 rounded bg-primary text-lg font-bold align-middle items-center justify-center flex">
-								<Icon name="material-symbols:deployed-code" size="24" />&nbsp;Frameworks
-							</h2>
-
-							<div class="flex flex-row justify-evenly w-full mb-5 mt-16">
-								<Icon name="devicon:html5" size="32" />
-								<Icon name="devicon:css3" size="32" />
-							</div>
-
-							<div class="flex flex-row justify-evenly w-full mb-5">
-								<Icon name="devicon:typescript" size="32" />
-								<Icon name="devicon:csharp" size="32" />
-							</div>
-
-							<div class="flex flex-row justify-evenly w-full mb-5">
-								<Icon name="devicon:python" size="32" />
-								<Icon name="devicon:php" size="32" />
-							</div>
-						</div>
-						<div class="relative w-3/12 text-center">
-							<h2 class="absolute top-[-50px] left-[50%] translate-x-[-50%] p-5 rounded bg-primary text-lg font-bold align-middle items-center justify-center flex">
-								<Icon name="material-symbols:terminal" size="24" />Tools
-							</h2>
-
-							<div class="flex flex-row justify-evenly w-full mb-5 mt-16">
-								<Icon name="devicon:html5" size="32" />
-								<Icon name="devicon:css3" size="32" />
-							</div>
-
-							<div class="flex flex-row justify-evenly w-full mb-5">
-								<Icon name="devicon:typescript" size="32" />
-								<Icon name="devicon:csharp" size="32" />
-							</div>
-
-							<div class="flex flex-row justify-evenly w-full mb-5">
-								<Icon name="devicon:python" size="32" />
-								<Icon name="devicon:php" size="32" />
-							</div>
-						</div>
+						<Card
+							image="/images/section-francisco-arnela.jpg"
+							image-title="Languages"
+							title="Tools & Platforms"
+							icon="material-symbols:terminal"
+							content="The main tools and platforms I use are Visual Studio Code, Beekeeper, and AWS. Along with Windows and Linux"
+							:badges="[
+								{
+									text: 'VS Code',
+									color: 'bg-blue-100 text-blue-500'
+								},
+								{
+									text: 'Beekeeper',
+									color: 'bg-yellow-100 text-yellow-500'
+								},
+								{
+									text: 'AWS',
+									color: 'bg-orange-100 text-orange-500'
+								},
+								{
+									text: 'Windows',
+									color: 'bg-blue-100 text-blue-500'
+								},
+								{
+									text: 'Linux',
+									color: 'bg-gray-100 bg-black-500'
+								}
+							]"
+						/>
 					</div>
 				</div>
 			</div>
@@ -188,25 +228,6 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
-.background-first {
-	background-image: url("/images/background-maksim.jpg");
-	background-repeat: repeat-y;
-	background-position: center;
-	background-size: cover;
-
-	/* backdrop */
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		background: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
-		z-index: 0;
-	}
-}
-
 .section {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -217,14 +238,29 @@ onUnmounted(() => {
 
 	padding: 15px;
 
-	/* &.one {
-		background-image: url("/images/background-visiwig-one.svg");
+	&.one {
+		background-image: url("/images/background-maksim.jpg");
+		background-repeat: repeat-y;
+		background-position: center;
+		background-size: cover;
+
+		/* backdrop */
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 110vh;
+			width: 100%;
+			background: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+			z-index: 0;
+		}
 	}
 
-	&.two {
+	/* &.two {
 		background-image: url("/images/background-visiwig-two.svg");
-	}
-
+	} */
+	/* 
 	&.three {
 		background-image: url("/images/background-visiwig-three.svg");
 	}
@@ -240,12 +276,6 @@ onUnmounted(() => {
 	&.six {
 		background-image: url("/images/background-visiwig-six.svg");
 	} */
-}
-
-.card {
-	background-color: whitesmoke;
-	border-radius: 5px;
-	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .github-logo {

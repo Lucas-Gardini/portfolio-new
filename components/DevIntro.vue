@@ -27,8 +27,12 @@ onMounted(() => {
 
 <template>
 	<div>
-		<LottieView class="animate__animated animate__fadeIn" style="position: absolute; left: 50%; transform: translateX(-50%)" :style="`top: -24px;`" animationLink="/party-penguin.json" :height="200" :width="200" />
-		<div class="container">
+		<ClientOnly>
+			<div style="position: absolute; left: 50%; transform: translateX(-50%); top: -24px">
+				<LottieView class="animate__animated animate__fadeInDown" animationLink="/party-penguin.json" :height="200" :width="200" />
+			</div>
+		</ClientOnly>
+		<div class="dev-intro ml-auto mr-auto">
 			<div class="box">
 				<div class="animate__animated animate__fadeIn title">
 					<h1 class="bold">Lucas Gardini<span class="no-animation"></span></h1>
@@ -41,7 +45,7 @@ onMounted(() => {
 		</div>
 
 		<div class="scroll-down-indicator" @click="scrollDown" v-if="!isWallpaper && showMouse">
-			<LottieView animation-link="/scroll-down.json" :height="50" :width="50" />
+			<LottieView animation-link="/scroll-down.json" class="animate__animated animate__fadeInUp" :height="50" :width="50" />
 		</div>
 	</div>
 </template>
@@ -64,8 +68,8 @@ onMounted(() => {
 	cursor: pointer;
 }
 
-.container {
-	width: 100%;
+.dev-intro {
+	width: 100vh;
 	height: 100vh;
 	background: transparent;
 
@@ -84,8 +88,6 @@ onMounted(() => {
 }
 
 .title {
-	width: 100%;
-	position: relative;
 	display: flex;
 	align-items: center;
 	height: 50px;
