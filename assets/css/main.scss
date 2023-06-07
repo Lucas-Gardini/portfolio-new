@@ -13,7 +13,7 @@ body {
 	overflow-x: hidden;
 	overflow-y: scroll;
 
-	background-image: url("/images/background-visiwig-four.svg");
+	// background-image: url("/images/background-visiwig-four.svg");
 	background-repeat: repeat-y;
 	background-position: center;
 	background-size: cover;
@@ -51,6 +51,10 @@ body {
 
 .border-primary {
 	border: 1px solid #2fed7b !important;
+}
+
+.bg-primary {
+	background-color: #2fed7b !important;
 }
 
 .bg-glass {

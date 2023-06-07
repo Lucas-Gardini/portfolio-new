@@ -2,7 +2,8 @@
 const REDIRECTS = {
 	github: "https://github.com/Lucas-Gardini",
 	youtube: "https://www.youtube.com/@kowalskijr.",
-	notFound: "https://lucas.gardini.dev"
+	notFound: "https://lucas.gardini.dev",
+	linkedin: "https://www.linkedin.com/in/lucasgardini/"
 };
 
 const url = ref(window.location.href);
@@ -17,6 +18,9 @@ onMounted(() => {
 		} else if (url.value.includes("youtube")) {
 			redirectingTo.text = "Youtube";
 			redirectingTo.link = REDIRECTS.youtube;
+		} else if (url.value.includes("linkedin")) {
+			redirectingTo.text = "LinkedIn";
+			redirectingTo.link = REDIRECTS.linkedin;
 		} else {
 			redirectingTo.text = "Redirect not found...";
 			redirectingTo.link = REDIRECTS.notFound;

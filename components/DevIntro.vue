@@ -30,13 +30,11 @@ onMounted(() => {
 		<LottieView class="animate__animated animate__fadeIn" style="position: absolute; left: 50%; transform: translateX(-50%)" :style="`top: -24px;`" animationLink="/party-penguin.json" :height="200" :width="200" />
 		<div class="container">
 			<div class="box">
-				<div class="title">
-					<span class="block"></span>
+				<div class="animate__animated animate__fadeIn title">
 					<h1 class="bold">Lucas Gardini<span class="no-animation"></span></h1>
 				</div>
 
-				<div class="role">
-					<div class="block"></div>
+				<div class="animate__animated animate__fadeInUp text-center text-white text-xl bg-green-600">
 					<p>Fullstack Developer</p>
 				</div>
 			</div>
@@ -77,7 +75,7 @@ onMounted(() => {
 }
 
 .box {
-	width: 250px;
+	/* width: 250px; */
 	height: 250px;
 	position: relative;
 	display: flex;
@@ -92,24 +90,11 @@ onMounted(() => {
 	align-items: center;
 	height: 50px;
 
-	.block {
-		width: 0%;
-		height: inherit;
-		background: #14a44d;
-		position: absolute;
-
-		display: flex;
-
-		&:not(.no-animation) {
-			animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
-		}
-	}
-
 	h1 {
 		/* font-family: "Poppins"; */
 		font-weight: bold;
 		color: #fff;
-		font-size: 32px;
+		font-size: 48px;
 		opacity: 1;
 		display: flex;
 		align-items: baseline;
@@ -119,17 +104,9 @@ onMounted(() => {
 			font-size: 24px;
 		}
 
-		&:not(.no-animation) {
-			-webkit-animation: mainFadeIn 2s forwards;
-			-o-animation: mainFadeIn 2s forwards;
-			animation: mainFadeIn 2s forwards;
-			animation-delay: 1.6s;
-			opacity: 0;
-		}
-
 		span {
-			width: 7px;
-			height: 7px;
+			width: 10px;
+			height: 10px;
 
 			-webkit-border-radius: 50%;
 			-moz-border-radius: 50%;
@@ -140,7 +117,7 @@ onMounted(() => {
 			margin-left: 5px;
 			margin-top: -10px;
 			position: absolute;
-			bottom: 13px;
+			bottom: 18px;
 			right: -12px;
 
 			@media (max-width: 768px) {
