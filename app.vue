@@ -218,7 +218,7 @@ onUnmounted(() => {
 				<div class="flex flex-col items-center">
 					<h1 class="text-white text-4xl mb-10 font-bold">Contact me</h1>
 
-					<div class="flex flex-row mt-10 gap-10">
+					<div class="flex flex-row flex-wrap items-center justify-center mt-10 gap-10">
 						<a href="https://web.facebook.com/lucasgardini.dias/" target="_blank" class="no-underline"><Icon name="logos:facebook" size="48" /></a>
 						<a href="https://github.com/Lucas-Gardini" target="_blank" class="no-underline"><Icon class="github-logo" name="logos:github-icon" size="48" /></a>
 						<a href="mailto:contato@gardini.dev" target="_blank" class="no-underline"><Icon name="bxs:envelope" size="50" color="white" /></a>
