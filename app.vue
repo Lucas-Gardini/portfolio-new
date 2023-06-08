@@ -31,6 +31,11 @@ onMounted(() => {
 onUnmounted(() => {
 	window.removeEventListener("scroll", handleScroll);
 });
+
+useHead({
+	title: "Portfolio - Lucas Gardini Dias",
+	meta: [{ name: "description", content: "My amazing minimalist portfolio website!" }]
+});
 </script>
 
 <template>
