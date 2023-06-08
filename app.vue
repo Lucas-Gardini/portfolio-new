@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from "./components/SailboatUI/Card.vue";
+import ScrollParallax from "vue3-parallax/src/components/ScrollParallax.vue";
 
 const route = useRoute();
 
@@ -84,9 +84,9 @@ onUnmounted(() => {
 					<div class="w-full mt-10 ml-auto mr-auto p-5 pt-0 pb-0">
 						<iframe
 							style="border-radius: 12px"
-							src="https://open.spotify.com/embed/playlist/1HOkicCnoebesus1oiHE91?utm_source=generator&theme=1"
+							src="https://open.spotify.com/embed/playlist/1HOkicCnoebesus1oiHE91?utm_source=generator"
 							width="100%"
-							height="352"
+							height="152"
 							frameBorder="0"
 							allowfullscreen="false"
 							allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -102,8 +102,8 @@ onUnmounted(() => {
 					<h1 class="text-white text-4xl mb-10 font-bold">Tecnologies</h1>
 
 					<div class="flex flex-wrap justify-center gap-10 flex-row mt-10">
-						<Card
-							image="/images/section-francisco-arnela.jpg"
+						<SailboatUICard
+							image="/images/typescript.jpg"
 							image-title="Languages"
 							title="Languages"
 							icon="ph:code-bold"
@@ -124,9 +124,9 @@ onUnmounted(() => {
 							]"
 						/>
 
-						<Card
-							image="/images/section-francisco-arnela.jpg"
-							image-title="Languages"
+						<SailboatUICard
+							image="/images/nestjs.jpg"
+							image-title="Frameworks"
 							title="Frameworks"
 							icon="material-symbols:deployed-code"
 							content="I have knowledge of front-end frameworks such as Vue and Nuxt, React, React-Native, and Next, and back-end frameworks like NestJS and Express."
@@ -146,9 +146,9 @@ onUnmounted(() => {
 							]"
 						/>
 
-						<Card
-							image="/images/section-francisco-arnela.jpg"
-							image-title="Languages"
+						<SailboatUICard
+							image="/images/mongodb.jpg"
+							image-title="Databases"
 							title="Databases"
 							icon="material-symbols:database"
 							content="I have experience working with databases such as PostgreSQL, MongoDB, and MySQL.<br/> Note: MongoDB holds a special place in my heart ❤️."
@@ -168,9 +168,9 @@ onUnmounted(() => {
 							]"
 						/>
 
-						<Card
-							image="/images/section-francisco-arnela.jpg"
-							image-title="Languages"
+						<SailboatUICard
+							image="/images/vscode.jpg"
+							image-title="Tools & Platforms"
 							title="Tools & Platforms"
 							icon="material-symbols:terminal"
 							content="The main tools and platforms I use are Visual Studio Code, Beekeeper, and AWS. Along with Windows and Linux"
@@ -201,21 +201,29 @@ onUnmounted(() => {
 				</div>
 			</div>
 			<div class="section four">
-				<div style="position: relative; z-index: 2"></div>
+				<div class="p-5">
+					<Divider />
+					<h1 class="text-white text-4xl mb-10 font-bold">I'm currently working on</h1>
+
+					<div class="flex flex-wrap justify-center gap-10 flex-row mt-10">
+						<SailboatUICard link="https://www.youtube.com/@kowalskijr." image="/images/youtube.jpg" image-title="Youtube Channel" title="Tools & Platforms" />
+						<SailboatUICard link="https://tauri.app/" image="/images/tauri.jpg" image-title="Learning Tauri" title="Tools & Platforms" />
+					</div>
+				</div>
 			</div>
-			<div class="section five">
+			<!-- <div class="section five">
 				<div style="position: relative; z-index: 2"></div>
-			</div>
+			</div> -->
 			<div class="section six">
 				<div class="flex flex-col items-center">
 					<h1 class="text-white text-4xl mb-10 font-bold">Contact me</h1>
 
 					<div class="flex flex-row mt-10 gap-10">
-						<a href="TODO" target="_blank" class="no-underline"><Icon name="logos:facebook" size="48" /></a>
-						<a href="TODO" target="_blank" class="no-underline"><Icon class="github-logo" name="logos:github-icon" size="48" /></a>
+						<a href="https://web.facebook.com/lucasgardini.dias/" target="_blank" class="no-underline"><Icon name="logos:facebook" size="48" /></a>
+						<a href="https://github.com/Lucas-Gardini" target="_blank" class="no-underline"><Icon class="github-logo" name="logos:github-icon" size="48" /></a>
 						<a href="mailto:contato@gardini.dev" target="_blank" class="no-underline"><Icon name="bxs:envelope" size="50" color="white" /></a>
-						<a href="TODO" target="_blank" class="no-underline"><Icon name="logos:youtube-icon" size="50" /></a>
-						<a href="TODO" target="_blank" class="no-underline"><Icon name="logos:linkedin-icon" size="48" /></a>
+						<a href="https://www.youtube.com/channel/UC9sswQK24QFRMSA7NNzEtww" target="_blank" class="no-underline"><Icon name="logos:youtube-icon" size="50" /></a>
+						<a href="https://www.linkedin.com/in/lucasgardini/" target="_blank" class="no-underline"><Icon name="logos:linkedin-icon" size="48" /></a>
 					</div>
 				</div>
 			</div>
@@ -228,7 +236,17 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
+/* body {
+	background-image: url("/images/background-maksim.jpg");
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: 100vw 100vh;
+} */
+
 .section {
+	position: relative;
+	z-index: 1;
+
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -238,12 +256,9 @@ onUnmounted(() => {
 
 	padding: 15px;
 
-	&.one {
-		background-image: url("/images/background-maksim.jpg");
-		background-repeat: repeat-y;
-		background-position: center;
-		background-size: cover;
+	background-color: #222222;
 
+	&.one {
 		/* backdrop */
 		&::before {
 			content: "";
@@ -257,9 +272,26 @@ onUnmounted(() => {
 		}
 	}
 
-	/* &.two {
-		background-image: url("/images/background-visiwig-two.svg");
-	} */
+	&.one .background-first {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		transform: translateZ(0);
+
+		background-image: url("/images/background-maksim.jpg");
+		background-repeat: repeat-y;
+		background-position: center;
+		background-size: cover;
+	}
+
+	&.two {
+		position: relative;
+		z-index: 2;
+		transform: translateZ(0);
+	}
 	/* 
 	&.three {
 		background-image: url("/images/background-visiwig-three.svg");

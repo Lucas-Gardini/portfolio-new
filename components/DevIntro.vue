@@ -69,7 +69,7 @@ onMounted(() => {
 }
 
 .dev-intro {
-	width: 100vh;
+	/* width: 100vh;	 */
 	height: 100vh;
 	background: transparent;
 

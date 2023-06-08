@@ -2519,6 +2519,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"core-js@npm:^3.6.5":
+  version: 3.30.2
+  resolution: "core-js@npm:3.30.2"
+  checksum: 73d47e2b9d9f502800973982d08e995bbf04832e20b04e04be31dd7607247158271315e9328788a2408190e291c7ffbefad141167b1e57dea9f983e1e723541e
+  languageName: node
+  linkType: hard
+
 "core-util-is@npm:~1.0.0":
   version: 1.0.3
   resolution: "core-util-is@npm:1.0.3"
@@ -5426,6 +5433,7 @@ __metadata:
     scss: ^0.2.4
     tailwindcss: ^3.3.2
     vue3-lottie: ^2.7.0
+    vue3-parallax: ^0.1.4
   languageName: unknown
   linkType: soft
 
@@ -8042,7 +8050,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue@npm:^3.3.4":
+"vue3-parallax@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "vue3-parallax@npm:0.1.4"
+  dependencies:
+    core-js: ^3.6.5
+    vue: ^3.0.0
+  checksum: 6f5ddb270e56a3db9e337a27a4959ef33ce6019b3e78b2f5bb387301611aabd273bc50fce622410e74141b44e0470db6edb9724c1dfcc9926b467a56b5857138
+  languageName: node
+  linkType: hard
+
+"vue@npm:^3.0.0, vue@npm:^3.3.4":
   version: 3.3.4
   resolution: "vue@npm:3.3.4"
   dependencies:
