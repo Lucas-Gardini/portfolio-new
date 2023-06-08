@@ -34,7 +34,10 @@ onUnmounted(() => {
 
 useHead({
 	title: "Portfolio - Lucas Gardini Dias",
-	meta: [{ name: "description", content: "My amazing minimalist portfolio website!" }]
+	meta: [
+		{ name: "description", content: "My amazing minimalist portfolio website!" },
+		{ name: "icon", content: "/favicon.ico" }
+	]
 });
 </script>
 
