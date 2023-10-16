@@ -11,7 +11,7 @@ const redirectingTo = reactive({ text: "", link: "" });
 
 const canShow = ref(false);
 onMounted(() => {
-	if (!url.value.includes("lucas.gardini.dev") && !url.value.includes("localhost")) {
+	if (!url.value.includes("portfolio") && !url.value.includes("localhost")) {
 		if (url.value.includes("github")) {
 			redirectingTo.text = "Github";
 			redirectingTo.link = REDIRECTS.github;
