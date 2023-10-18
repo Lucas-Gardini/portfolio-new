@@ -7,7 +7,7 @@ const showMouse = ref(false);
 
 function scrollDown() {
 	if (section.value) {
-		scrollToPosition(section.value.offsetTop - 120, 300);
+		scrollToPosition(section.value.offsetTop + 10, 300);
 
 		emit("scrolledDown");
 	}
@@ -44,7 +44,7 @@ onMounted(() => {
 			</div>
 		</div>
 
-		<div class="scroll-down-indicator" @click="scrollDown" v-if="!isWallpaper && showMouse">
+		<div class="scroll-down-indicator z-50" @click="scrollDown" v-if="!isWallpaper && showMouse">
 			<LottieView animation-link="/scroll-down.json" class="animate__animated animate__fadeInUp" :height="50" :width="50" />
 		</div>
 	</div>

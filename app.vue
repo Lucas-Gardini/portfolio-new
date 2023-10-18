@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ScrollParallax from "vue3-parallax/src/components/ScrollParallax.vue";
-
 const route = useRoute();
 
 const isWallpaper = computed(() => route.query.wallpaper === "1");
@@ -49,22 +47,18 @@ useHead({
 	</div>
 	<div v-else>
 		<ScrollIndicator />
-		<!-- <TopDevName :show="state.showTop" />
-		<TopSocial :show="state.showTop" /> -->
-
-		<!-- <TopBar :show="state.showTop" /> -->
 
 		<div>
-			<!-- <Backdrop /> -->
 			<div class="section one" style="padding: 0; height: 110vh">
 				<div class="background-first">
 					<DevIntro @scrolled-down="handleScroll" />
 				</div>
 			</div>
-			<div class="section two">
-				<div class="grid grid-flow-row-dense">
-					<div class="flex flex-col gap-5 p-5 text-center">
-						<h1 class="text-white text-4xl font-bold">Hello! I'm <span class="text-primary">Lucas Gardini</span>, a <span>Fullstack</span> developer from Brazil!</h1>
+			<div class="section two flex">
+				<div class="container mx-auto">
+					<div class="flex flex-col gap-5 p-5 text-left">
+						<img class="mx-2 mb-4 h-[144px] w-[144px] select-none rounded-full" alt="wiidede" src="/images/logo.jpeg" />
+						<h1 class="text-white text-[32px] font-bold">Hello! I'm <span class="text-primary">Lucas Gardini</span>, a Fullstack developer from Brazil!</h1>
 
 						<hr class="w-[25px] ml-auto mr-auto" />
 
@@ -277,6 +271,7 @@ useHead({
 			width: 100%;
 			background: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
 			z-index: 0;
+			pointer-events: none;
 		}
 	}
 
