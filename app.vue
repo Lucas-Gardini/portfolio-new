@@ -66,11 +66,11 @@ useHead({
 						<h1 class="text-white text-[26px] md:text-[32px] font-bold">Hello! I'm <span class="text-primary">Lucas Gardini</span>, a Fullstack developer from Brazil!</h1>
 
 						<div class="flex flex-wrap">
-							<UButton class="btn-social" href="mailto:contato@lucasgardini.com" target="_blank"><Icon name="vscode-icons:file-type-outlook" /></UButton>
-							<UButton class="btn-social" href="https://www.facebook.com/lucasgardini.dias" target="_blank"><Icon name="logos:facebook" /></UButton>
-							<UButton class="btn-social" href="https://www.youtube.com/@kowalskijr." target="_blank"><Icon name="logos:youtube-icon" /></UButton>
-							<UButton class="btn-social" href="https://www.linkedin.com/in/lucas-gardini-dias-4b20681b3/" target="_blank"><Icon name="logos:linkedin-icon" /></UButton>
-							<UButton class="btn-social" href="https://github.com/Lucas-Gardini" target="_blank"><Icon name="mdi:github" color="white" /></UButton>
+							<a class="btn-social" href="mailto:contato@lucasgardini.com" target="_blank"><Icon name="vscode-icons:file-type-outlook" /></a>
+							<a class="btn-social" href="https://www.facebook.com/lucasgardini.dias" target="_blank"><Icon name="logos:facebook" /></a>
+							<a class="btn-social" href="https://www.youtube.com/@kowalskijr." target="_blank"><Icon name="logos:youtube-icon" /></a>
+							<a class="btn-social" href="https://www.linkedin.com/in/lucas-gardini-dias-4b20681b3/" target="_blank"><Icon name="logos:linkedin-icon" /></a>
+							<a class="btn-social" href="https://github.com/Lucas-Gardini" target="_blank"><Icon name="mdi:github" color="white" /></a>
 						</div>
 						<!-- 
 						<h2 class="text-white text-3xl">
@@ -169,6 +169,19 @@ useHead({
 	font-size: 32px;
 
 	margin-right: 10px;
+
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	border-radius: 15px;
+
+	height: 50px;
+	width: 50px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .btn-social:hover {
