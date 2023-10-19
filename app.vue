@@ -20,6 +20,11 @@ const handleScroll = () => {
 	}
 };
 
+const { copy } = useCopyToClipboard();
+function copyUrl(id: string) {
+	copy(`${window.location.origin}${window.location.pathname}${id}`);
+}
+
 onMounted(() => {
 	state.viewportHeight = window.innerHeight;
 	state.threshold = state.viewportHeight;
@@ -55,25 +60,35 @@ useHead({
 				</div>
 			</div>
 			<div class="section two flex">
-				<div class="container mx-auto">
+				<div class="container mx-auto max-w-[768px]">
 					<div class="flex flex-col gap-5 p-5 text-left">
 						<img class="mx-2 mb-4 h-[144px] w-[144px] select-none rounded-full" alt="wiidede" src="/images/logo.jpeg" />
-						<h1 class="text-white text-[32px] font-bold">Hello! I'm <span class="text-primary">Lucas Gardini</span>, a Fullstack developer from Brazil!</h1>
+						<h1 class="text-white text-[26px] md:text-[32px] font-bold">Hello! I'm <span class="text-primary">Lucas Gardini</span>, a Fullstack developer from Brazil!</h1>
 
-						<hr class="w-[25px] ml-auto mr-auto" />
-
+						<div class="flex flex-wrap">
+							<UButton class="btn-social" href="mailto:contato@lucasgardini.com" target="_blank"><Icon name="vscode-icons:file-type-outlook" /></UButton>
+							<UButton class="btn-social" href="https://www.facebook.com/lucasgardini.dias" target="_blank"><Icon name="logos:facebook" /></UButton>
+							<UButton class="btn-social" href="https://www.youtube.com/@kowalskijr." target="_blank"><Icon name="logos:youtube-icon" /></UButton>
+							<UButton class="btn-social" href="https://www.linkedin.com/in/lucas-gardini-dias-4b20681b3/" target="_blank"><Icon name="logos:linkedin-icon" /></UButton>
+							<UButton class="btn-social" href="https://github.com/Lucas-Gardini" target="_blank"><Icon name="mdi:github" color="white" /></UButton>
+						</div>
+						<!-- 
 						<h2 class="text-white text-3xl">
 							Currently working at <a href="https://integrativa.com.br/" target="_blank" class="text-blue-500">Integrativa</a>, developing solutions with <span class="text-blue-400">Typescript</span> and
 							<span class="text-purple-500">C#</span>
-						</h2>
+						</h2> -->
 
 						<Divider />
 
 						<h1 class="text-white text-4xl font-bold">About me</h1>
 						<p class="text-white">
 							Graduated in Computer Networks from the <a href="https://ctd.ifsp.edu.br/" target="_blank" class="text-blue-500 underline">Federal Institute of São Paulo, Catanduva Campus</a>, I started programming in
-							2019 at the beginning of the course and have been learning more every day since then. I started with Python and then PHP, but I ended up finding my passion in Javascript. Since then, my focus has been
-							on enhancing my skills both in front-end development using VueJs with NuxtJs and Electron, and in back-end development using NodeJs and Express, along with MongoDB and PostgreSQL.
+							2019 at the beginning of the course and have been learning more every day since. I started with Python and then PHP, but I ended up finding my passion in Javascript.
+						</p>
+
+						<p class="text-white">
+							Since then, my focus has been on enhancing my skills both in front-end development using VueJs with NuxtJs and Electron, and in back-end development using NodeJs and Express, along with MongoDB and
+							PostgreSQL.
 						</p>
 
 						<p class="text-white">
@@ -94,156 +109,71 @@ useHead({
 							allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 							loading="lazy"
 						></iframe>
+						<Divider />
 					</div>
 				</div>
 			</div>
 
 			<div class="section three">
-				<div class="p-5">
-					<Divider />
-					<h1 class="text-white text-4xl mb-10 font-bold">Tecnologies</h1>
+				<div class="container mx-auto max-w-[768px]">
+					<div class="flex flex-col gap-5 p-5">
+						<h1 @click="copyUrl('#experiences')" id="experiences" class="link text-white text-4xl font-bold">My Experiences</h1>
 
-					<div class="flex flex-wrap justify-center gap-10 flex-row mt-10">
-						<SailboatUICard
-							image="/images/typescript.jpg"
-							image-title="Languages"
-							title="Languages"
-							icon="ph:code-bold"
-							content="I have experience with markup languages HTML, CSS, and XML, as well as programming languages Typescript, C#, and Python."
-							:badges="[
-								{
-									text: 'Typescript',
-									color: 'bg-blue-100 text-blue-500'
-								},
-								{
-									text: 'C#',
-									color: 'bg-purple-100 text-purple-500'
-								},
-								{
-									text: 'Python',
-									color: 'bg-yellow-100 text-yellow-500'
-								}
-							]"
-						/>
+						<h2 class="text-white text-2xl font-bold">Integrativa (2022 - )</h2>
 
-						<SailboatUICard
-							image="/images/nestjs.jpg"
-							image-title="Frameworks"
-							title="Frameworks"
-							icon="material-symbols:deployed-code"
-							content="I have knowledge of front-end frameworks such as Vue and Nuxt, React, React-Native, and Next, and back-end frameworks like NestJS and Express."
-							:badges="[
-								{
-									text: 'Vue & Nuxt',
-									color: 'bg-green-100 text-green-500'
-								},
-								{
-									text: 'React, React-Native & Next',
-									color: 'bg-blue-100 text-blue-600'
-								},
-								{
-									text: 'NestJS & Express',
-									color: 'bg-red-100 text-red-500'
-								}
-							]"
-						/>
+						<h3 class="text-white font-bold">Web Developer</h3>
 
-						<SailboatUICard
-							image="/images/mongodb.jpg"
-							image-title="Databases"
-							title="Databases"
-							icon="material-symbols:database"
-							content="I have experience working with databases such as PostgreSQL, MongoDB, and MySQL.<br/> Note: MongoDB holds a special place in my heart ❤️."
-							:badges="[
-								{
-									text: 'PostgreSQL',
-									color: 'bg-blue-100 text-blue-400'
-								},
-								{
-									text: 'MongoDB',
-									color: 'bg-green-100 text-green-600'
-								},
-								{
-									text: 'MySQL',
-									color: 'bg-yellow-100 text-yellow-600'
-								}
-							]"
-						/>
+						<p class="text-white">I primarily work with TypeScript, using the NestJS framework for creating REST APIs and Nuxt for developing web applications.</p>
 
-						<SailboatUICard
-							image="/images/vscode.jpg"
-							image-title="Tools & Platforms"
-							title="Tools & Platforms"
-							icon="material-symbols:terminal"
-							content="The main tools and platforms I use are Visual Studio Code, Beekeeper, and AWS. Along with Windows and Linux"
-							:badges="[
-								{
-									text: 'VS Code',
-									color: 'bg-blue-100 text-blue-500'
-								},
-								{
-									text: 'Beekeeper',
-									color: 'bg-yellow-100 text-yellow-500'
-								},
-								{
-									text: 'AWS',
-									color: 'bg-orange-100 text-orange-500'
-								},
-								{
-									text: 'Windows',
-									color: 'bg-blue-100 text-blue-500'
-								},
-								{
-									text: 'Linux',
-									color: 'bg-gray-100 bg-black-500'
-								}
-							]"
-						/>
+						<p class="text-white">I leverage Docker, cloud computing with AWS, and employ C# and Python for developing certain applications. I also make use of queue/messaging tools such as RabbitMQ, BullJS, etc.</p>
+
+						<p class="text-white">Additionally, I work with MongoDB, Postgres, and Redis databases. My role involves integrating with various internet services through APIs.</p>
 					</div>
+					<Divider />
 				</div>
 			</div>
+
 			<div class="section four">
-				<div class="p-5">
-					<Divider />
-					<h1 class="text-white text-4xl mb-10 font-bold">I'm currently working on</h1>
+				<div class="container mx-auto max-w-[768px]">
+					<div class="flex flex-col gap-5 p-5">
+						<h1 @click="copyUrl('#skills')" id="skills" class="link text-white text-4xl font-bold">My Skills</h1>
 
-					<div class="flex flex-wrap justify-center gap-10 flex-row mt-10">
-						<SailboatUICard link="https://www.youtube.com/@kowalskijr." image="/images/youtube.jpg" image-title="Youtube Channel" title="Tools & Platforms" />
-						<SailboatUICard link="https://tauri.app/" image="/images/tauri.jpg" image-title="Learning Tauri" title="Tools & Platforms" />
-					</div>
-				</div>
-			</div>
-			<!-- <div class="section five">
-				<div style="position: relative; z-index: 2"></div>
-			</div> -->
-			<div class="section six">
-				<div class="flex flex-col items-center">
-					<h1 class="text-white text-4xl mb-10 font-bold">Contact me</h1>
+						<h2 class="text-white text-2xl font-bold">Programming Languages</h2>
 
-					<div class="flex flex-row flex-wrap items-center justify-center mt-10 gap-10">
-						<a href="https://web.facebook.com/lucasgardini.dias/" target="_blank" class="no-underline"><Icon name="logos:facebook" size="48" /></a>
-						<a href="https://github.com/Lucas-Gardini" target="_blank" class="no-underline"><Icon class="github-logo" name="logos:github-icon" size="48" /></a>
-						<a href="mailto:contato@gardini.dev" target="_blank" class="no-underline"><Icon name="bxs:envelope" size="50" color="white" /></a>
-						<a href="https://www.youtube.com/channel/UC9sswQK24QFRMSA7NNzEtww" target="_blank" class="no-underline"><Icon name="logos:youtube-icon" size="50" /></a>
-						<a href="https://www.linkedin.com/in/lucasgardini/" target="_blank" class="no-underline"><Icon name="logos:linkedin-icon" size="48" /></a>
+						<ul class="text-white">
+							<li>• JavaScript/TypeScript</li>
+							<li>• C#</li>
+							<li>• Python</li>
+						</ul>
+
+						<h2 class="text-white text-2xl font-bold mt-5">Frameworks</h2>
+
+						<ul class="text-white">
+							<li>• NestJS</li>
+							<li>• Nuxt</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<ClientOnly>
-			<Forwarder />
-		</ClientOnly>
 	</div>
 </template>
 
 <style lang="scss">
-/* body {
-	background-image: url("/images/background-maksim.jpg");
-	background-repeat: no-repeat;
-	background-position: top;
-	background-size: 100vw 100vh;
-} */
+.btn-social {
+	transition: all 0.1s ease-in-out;
+
+	background-color: transparent !important;
+	border: 1px solid transparent;
+
+	font-size: 32px;
+
+	margin-right: 10px;
+}
+
+.btn-social:hover {
+	background-color: #ffffff11 !important;
+}
 
 .section {
 	position: relative;
@@ -253,7 +183,7 @@ useHead({
 	background-size: cover;
 	background-position: center;
 
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	width: 100vw;
 
 	padding: 15px;
@@ -316,6 +246,23 @@ useHead({
 .github-logo {
 	& > * {
 		fill: white !important;
+	}
+}
+
+.link {
+	cursor: pointer;
+	transition: all 0.1s ease-in-out;
+
+	border-bottom: 1px dotted #ffffff55;
+
+	&:hover {
+		color: #ffffffdd;
+		border-bottom: 1px solid #ffffff55;
+
+		// add # to the beginning of the url
+		&::before {
+			content: "# ";
+		}
 	}
 }
 </style>
